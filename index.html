@@ -10,27 +10,48 @@
   <div class="container">
     <h1>Consulta de Produtos Danificados</h1>
 
+    <!-- 🔹 NOVO MENU COM 3 BOTÕES -->
     <nav class="menu">
-  <ul>
-    <li class="dropdown">
-      <a href="#" class="dropbtn">PROCEDIMENTOS</a>
-      <div class="dropdown-content">
-        <a href="https://drive.google.com/file/d/1hgmcQGdXz8ZKb_R3TKv4i3m26Y_VECvR/view?usp=drive_link" target="_blank">
-          ▶️ Registro de fotos TUTORIAL
-        </a>
-        <a href="USANDO O LINK.pdf" target="_blank">USANDO A PLATAFORMA</a>
-        <a href="#">Outro procedimento</a>
-      </div>
-    </li>
-  </ul>
-</nav>
+      <ul>
+        <!-- Botão 1: Procedimentos -->
+        <li class="dropdown">
+          <a href="#" class="dropbtn">PROCEDIMENTOS</a>
+          <div class="dropdown-content">
+            <a href="https://drive.google.com/file/d/1hgmcQGdXz8ZKb_R3TKv4i3m26Y_VECvR/view?usp=drive_link" target="_blank">▶️ Registro de fotos TUTORIAL</a>
+            <a href="USANDO O LINK.pdf" target="_blank">USANDO A PLATAFORMA</a>
+            <a href="#">Outro procedimento</a>
+          </div>
+        </li>
 
+        <!-- Botão 2: Pós Vendas -->
+        <li class="dropdown">
+          <a href="#" class="dropbtn">PÓS VENDAS</a>
+          <div class="dropdown-content">
+            <a href="https://drive.google.com/file/d/1hgmcQGdXz8ZKb_R3TKv4i3m26Y_VECvR/view?usp=drive_link" target="_blank">▶️ Registro de fotos TUTORIAL</a>
+            <a href="USANDO O LINK.pdf" target="_blank">USANDO A PLATAFORMA</a>
+            <a href="#">Outro procedimento</a>
+          </div>
+        </li>
+
+        <!-- Botão 3: Logística -->
+        <li class="dropdown">
+          <a href="#" class="dropbtn">LOGÍSTICA</a>
+          <div class="dropdown-content">
+            <a href="https://drive.google.com/file/d/1hgmcQGdXz8ZKb_R3TKv4i3m26Y_VECvR/view?usp=drive_link" target="_blank">▶️ Registro de fotos TUTORIAL</a>
+            <a href="USANDO O LINK.pdf" target="_blank">USANDO A PLATAFORMA</a>
+            <a href="#">Outro procedimento</a>
+          </div>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- 🔹 Campo de pesquisa -->
     <input type="text" id="searchGeral" placeholder="Pesquisar pedido, OS, fabricante, ou descrição..." autocomplete="off">
     <ul id="suggestionsGeral" class="suggestions"></ul>
 
     <button id="btnEncerrados" class="btn-encerrados">🔴 ENCERRADOS</button>
 
-
+    <!-- 🔹 Tabela -->
     <div class="table-wrapper">
       <table id="results">
         <thead>
