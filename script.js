@@ -15,12 +15,12 @@ fetch("danificados.csv")
     const linhas = text.split("\n").slice(1);
     dados = linhas.map(linha => {
       const [
-        pedido, os, fabricante, status, descricao, cod,
+        setor, nome, celular, e-mail, descricao, cod,
         btus, nf_fabricante, liquidacao, setor, fotos, defeito, alerta
       ] = linha.split(",");
 
       return {
-        pedido, os, fabricante, status, descricao, cod,
+        setor, nome, celular, e-mail, descricao, cod,
         btus, nf_fabricante, liquidacao, setor, fotos, defeito, alerta
       };
     });
@@ -71,10 +71,10 @@ function mostrarResultados(filtrados) {
 
     const tr = document.createElement("tr");
     tr.innerHTML = `
-      <td>${d.pedido || ""}</td>
-      <td>${d.os || ""}</td>
-      <td>${d.fabricante || ""}</td>
-      <td>${d.status || ""}</td>
+      <td>${d.setor || ""}</td>
+      <td>${d.nome || ""}</td>
+      <td>${d.celular || ""}</td>
+      <td>${d.e-mail || ""}</td>
       <td>${d.descricao || ""}</td>
       <td>${d.cod || ""}</td>
       <td>${d.btus || ""}</td>
