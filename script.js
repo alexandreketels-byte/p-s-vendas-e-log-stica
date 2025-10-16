@@ -1,149 +1,57 @@
-let dados = [];
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PÓS VENDAS E LOGÍSTICA</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>PROCEDIMENTOS</h1>
 
-// Carrega o CSV e mostra data de atualização
-fetch("danificados.csv")
-  .then(response => {
-    const dataArquivo = new Date(response.headers.get("Last-Modified"));
-    if (!isNaN(dataArquivo)) {
-      const opcoes = { day: "2-digit", month: "2-digit", year: "numeric", hour: "2-digit", minute: "2-digit" };
-      document.getElementById("ultimaAtualizacao").textContent =
-        "Última atualização: " + dataArquivo.toLocaleString("pt-BR", opcoes);
-    }
-    return response.text();
-  })
-  .then(text => {
-    const linhas = text.split("\n").slice(1);
-    dados = linhas.map(linha => {
-      const [
-        setor, nome, celular, e-mail, descricao, cod,
-        btus, nf_fabricante, liquidacao, setor, fotos, defeito, alerta
-      ] = linha.split(",");
+    <!-- 🔹 MENU PRINCIPAL -->
+    <nav class="menu">
+      <ul>
+        <li class="dropdown">
+          <a href="#" class="dropbtn">PÓS VENDAS</a>
+          <div class="dropdown-content">
+            <a href="fotos para devolução.pdf" target="_blank">Registro de fotos devolução</a>
+            <a href="USANDO O LINK.pdf" target="_blank">USANDO A PLATAFORMA</a>
+            <a href="#">Outro procedimento</a>
+          </div>
+        </li>
 
-      return {
-        setor, nome, celular, e-mail, descricao, cod,
-        btus, nf_fabricante, liquidacao, setor, fotos, defeito, alerta
-      };
-    });
-  });
+        <li class="dropdown">
+          <a href="#" class="dropbtn">LOGÍSTICA</a>
+          <div class="dropdown-content">
+            <a href="https://drive.google.com/file/d/1hgmcQGdXz8ZKb_R3TKv4i3m26Y_VECvR/view?usp=drive_link" target="_blank">▶️ Registro de fotos TUTORIAL</a>
+            <a href="USANDO O LINK.pdf" target="_blank">USANDO A PLATAFORMA</a>
+            <a href="#">Outro procedimento</a>
+          </div>
+        </li>
+      </ul>
+    </nav>
 
-// Elementos
-const tbody = document.querySelector("#results tbody");
-const inputGeral = document.getElementById("searchGeral");
-const sugestoes = document.getElementById("suggestionsGeral");
-const contador = document.getElementById("contadorResultados");
+    <!-- 🔹 Tabela fixa com dados do CSV -->
+    <div class="table-wrapper">
+      <table id="results">
+        <thead>
+          <tr>
+            <th>SETOR</th>
+            <th>NOME</th>
+            <th>CELULAR</th>
+            <th>E-MAIL</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
 
-// Remove acentos
-function removerAcentos(str) {
-  return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-}
+    <p id="contadorResultados"></p>
+    <p id="ultimaAtualizacao">Última atualização: --</p>
+  </div>
 
-// Exibir resultados
-function mostrarResultados(filtrados) {
-  const thead = document.querySelector("#results thead");
-  const tbody = document.querySelector("#results tbody");
-
-  // Remove cabeçalho extra anterior (se existir)
-  const oldCountRow = document.querySelector(".count-row");
-  if (oldCountRow) oldCountRow.remove();
-
-  tbody.innerHTML = "";
-
-  if (filtrados.length === 0) {
-    tbody.innerHTML = "<tr><td colspan='12'>Nenhum resultado encontrado.</td></tr>";
-    contador.textContent = "";
-    return;
-  }
-
-  // 🔴 Cria linha de contagem acima das colunas
-  const countRow = document.createElement("tr");
-  countRow.classList.add("count-row");
-  countRow.innerHTML = `<th colspan="13" style="text-align:left; color: #ffeb3b;">
-    ${filtrados.length} registro${filtrados.length > 1 ? "s" : ""} encontrado${filtrados.length > 1 ? "s" : ""}
-  </th>`;
-  thead.prepend(countRow);
-
-  // Monta linhas normais
-  filtrados.forEach(d => {
-    const fotosTexto = d.fotos || "";
-    const fotosFormatado = /sem\s*foto/i.test(fotosTexto)
-      ? `<span class="sem-foto">${fotosTexto}</span>`
-      : fotosTexto;
-
-    const tr = document.createElement("tr");
-    tr.innerHTML = `
-      <td>${d.setor || ""}</td>
-      <td>${d.nome || ""}</td>
-      <td>${d.celular || ""}</td>
-      <td>${d.e-mail || ""}</td>
-
-  ${
-    d.alerta
-      ? /separar/i.test(d.alerta)
-        ? `<span class="separar">${d.alerta}</span>`
-        : /encerrar/i.test(d.alerta)
-          ? `<span class="encerrar">${d.alerta}</span>`
-          : d.alerta
-      : ""
-  }
-</td>
-    `;
-    tbody.appendChild(tr);
-  });
-
-  contador.textContent = `${filtrados.length} registro${filtrados.length > 1 ? "s" : ""} encontrado${filtrados.length > 1 ? "s" : ""}`;
-}
-
-
-// Busca exata
-function buscar(termo) {
-  const termoNormalizado = removerAcentos(termo.trim().toLowerCase());
-  const filtrados = dados.filter(d => {
-    return Object.values(d)
-      .some(v => removerAcentos(v?.toLowerCase() || "") === termoNormalizado);
-  });
-  mostrarResultados(filtrados);
-}
-
-// Sugestões
-inputGeral.addEventListener("input", () => {
-  const termo = inputGeral.value.trim().toLowerCase();
-  const termoNormalizado = removerAcentos(termo);
-  sugestoes.innerHTML = "";
-  if (termo.length < 2) return;
-
-  const combinados = dados.flatMap(d => Object.values(d));
-  const unicos = [...new Set(
-    combinados.filter(v => removerAcentos(v?.toLowerCase() || "").includes(termoNormalizado))
-  )];
-
-  unicos.slice(0, 5).forEach(valor => {
-    const li = document.createElement("li");
-    li.textContent = valor;
-    li.onclick = () => {
-      inputGeral.value = valor;
-      sugestoes.innerHTML = "";
-      buscar(valor);
-    };
-    sugestoes.appendChild(li);
-  });
-});
-
-// Enter → buscar
-inputGeral.addEventListener("keydown", e => {
-  if (e.key === "Enter") {
-    sugestoes.innerHTML = "";
-    buscar(inputGeral.value);
-  }
-});
-
-// Clicar fora → fecha sugestões
-document.addEventListener("click", e => {
-  if (!sugestoes.contains(e.target) && e.target !== inputGeral) {
-    sugestoes.innerHTML = "";
-  }
-});
-
-document.getElementById("btnEncerrados").addEventListener("click", () => {
-  window.location.href = "encerrados.html";
-});
-
+  <script src="script.js"></script>
+</body>
+</html>
