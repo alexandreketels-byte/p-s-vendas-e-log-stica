@@ -1,57 +1,47 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PÓS VENDAS E LOGÍSTICA</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <div class="container">
-    <h1>PROCEDIMENTOS</h1>
+let dados = [];
 
-    <!-- 🔹 MENU PRINCIPAL -->
-    <nav class="menu">
-      <ul>
-        <li class="dropdown">
-          <a href="#" class="dropbtn">PÓS VENDAS</a>
-          <div class="dropdown-content">
-            <a href="fotos para devolução.pdf" target="_blank">Registro de fotos devolução</a>
-            <a href="USANDO O LINK.pdf" target="_blank">USANDO A PLATAFORMA</a>
-            <a href="#">Outro procedimento</a>
-          </div>
-        </li>
+// Carrega CSV e exibe data de atualização
+fetch("danificados.csv")
+  .then(response => {
+    const dataArquivo = new Date(response.headers.get("Last-Modified"));
+    if (!isNaN(dataArquivo)) {
+      const opcoes = { day: "2-digit", month: "2-digit", year: "numeric", hour: "2-digit", minute: "2-digit" };
+      document.getElementById("ultimaAtualizacao").textContent =
+        "Última atualização: " + dataArquivo.toLocaleString("pt-BR", opcoes);
+    }
+    return response.text();
+  })
+  .then(text => {
+    const linhas = text.split("\n").slice(1);
+    dados = linhas.map(linha => {
+      const [setor, nome, celular, email] = linha.split(",");
+      return { setor, nome, celular, email };
+    });
 
-        <li class="dropdown">
-          <a href="#" class="dropbtn">LOGÍSTICA</a>
-          <div class="dropdown-content">
-            <a href="https://drive.google.com/file/d/1hgmcQGdXz8ZKb_R3TKv4i3m26Y_VECvR/view?usp=drive_link" target="_blank">▶️ Registro de fotos TUTORIAL</a>
-            <a href="USANDO O LINK.pdf" target="_blank">USANDO A PLATAFORMA</a>
-            <a href="#">Outro procedimento</a>
-          </div>
-        </li>
-      </ul>
-    </nav>
+    mostrarTabela(dados);
+  });
 
-    <!-- 🔹 Tabela fixa com dados do CSV -->
-    <div class="table-wrapper">
-      <table id="results">
-        <thead>
-          <tr>
-            <th>SETOR</th>
-            <th>NOME</th>
-            <th>CELULAR</th>
-            <th>E-MAIL</th>
-          </tr>
-        </thead>
-        <tbody></tbody>
-      </table>
-    </div>
+// Mostra os dados na tabela
+function mostrarTabela(dados) {
+  const tbody = document.querySelector("#results tbody");
+  tbody.innerHTML = "";
 
-    <p id="contadorResultados"></p>
-    <p id="ultimaAtualizacao">Última atualização: --</p>
-  </div>
+  if (dados.length === 0) {
+    tbody.innerHTML = "<tr><td colspan='4'>Nenhum dado encontrado.</td></tr>";
+    return;
+  }
 
-  <script src="script.js"></script>
-</body>
-</html>
+  dados.forEach(d => {
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td>${d.setor || ""}</td>
+      <td>${d.nome || ""}</td>
+      <td>${d.celular || ""}</td>
+      <td>${d.email || ""}</td>
+    `;
+    tbody.appendChild(tr);
+  });
+
+  document.getElementById("contadorResultados").textContent =
+    `${dados.length} registro${dados.length > 1 ? "s" : ""} encontrado${dados.length > 1 ? "s" : ""}`;
+}
