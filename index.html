@@ -5,57 +5,44 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PÓS VENDAS E LOGÍSTICA</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
   <div class="container">
     <h1>PROCEDIMENTOS</h1>
 
-    <!-- 🔹 NOVO MENU COM 3 BOTÕES -->
+    <!-- 🔹 MENU PRINCIPAL -->
     <nav class="menu">
       <ul>
-        <!-- Botão 1: Procedimentos -->
-     
-        <!-- Botão 2: Pós Vendas -->
         <li class="dropdown">
           <a href="#" class="dropbtn">PÓS VENDAS</a>
           <div class="dropdown-content">
-            <a href="fotos para devolução.pdf" target="_blank">Registro de fotos devolução</a>
-            <a href="USANDO O LINK.pdf" target="_blank">USANDO A PLATAFORMA</a>
-            <a href="#">Outro procedimento</a>
+            <a href="fotos para devolução.pdf" target="_blank">📸 Registro de fotos devolução</a>
+            <a href="USANDO O LINK.pdf" target="_blank">🧭 Usando a plataforma</a>
+            <a href="#">📄 Outro procedimento</a>
           </div>
         </li>
 
-        <!-- Botão 3: Logística -->
         <li class="dropdown">
           <a href="#" class="dropbtn">LOGÍSTICA</a>
           <div class="dropdown-content">
             <a href="https://drive.google.com/file/d/1hgmcQGdXz8ZKb_R3TKv4i3m26Y_VECvR/view?usp=drive_link" target="_blank">▶️ Registro de fotos TUTORIAL</a>
-            <a href="USANDO O LINK.pdf" target="_blank">USANDO A PLATAFORMA</a>
-            <a href="#">Outro procedimento</a>
+            <a href="USANDO O LINK.pdf" target="_blank">🧭 Usando a plataforma</a>
+            <a href="#">📄 Outro procedimento</a>
           </div>
         </li>
       </ul>
     </nav>
 
-
-
-
-    <!-- 🔹 Tabela -->
-    <div class="table-wrapper">
-      <table id="results">
-        <thead>
-          <tr>
-            <th>SETOR</th>
-            <th>NOME</th>
-            <th>CELULAR</th>
-            <th>E-MAIL</th>
-
-          </tr>
-        </thead>
-        <tbody></tbody>
-      </table>
+    <!-- 🔹 CAMPO DE PESQUISA -->
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="🔍 Buscar por nome ou setor...">
     </div>
 
+    <!-- 🔹 CARDS DE EQUIPE -->
+    <div id="cardsContainer" class="cards-container"></div>
+
+    <!-- 🔹 INFORMAÇÕES FINAIS -->
     <p id="contadorResultados"></p>
     <p id="ultimaAtualizacao">Última atualização: --</p>
   </div>
