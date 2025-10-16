@@ -94,6 +94,15 @@ h1 {
 .search-box {
   margin: 20px auto;
 }
+
+.titulo-contatos {
+  margin-top: 10px;
+  font-size: 1.8rem;
+  letter-spacing: 2px;
+  color: gold;
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.8);
+}
+
 .search-box input {
   width: 80%;
   max-width: 500px;
