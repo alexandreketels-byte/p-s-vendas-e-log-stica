@@ -7,41 +7,51 @@ fetch("equipe.csv")
     if (!isNaN(dataArquivo)) {
       const opcoes = { day: "2-digit", month: "2-digit", year: "numeric", hour: "2-digit", minute: "2-digit" };
       document.getElementById("ultimaAtualizacao").textContent =
-        "Última atualização: " + dataArquivo.toLocaleString("pt-BR", opcoes);
+        "⏰ Última atualização: " + dataArquivo.toLocaleString("pt-BR", opcoes);
     }
     return response.text();
   })
   .then(text => {
-    const linhas = text.split("\n").slice(1);
+    const linhas = text.trim().split("\n").slice(1);
     dados = linhas.map(linha => {
       const [setor, nome, celular, email] = linha.split(",");
       return { setor, nome, celular, email };
     });
-
-    mostrarTabela(dados);
+    mostrarCards(dados);
   });
 
-// Mostra os dados na tabela
-function mostrarTabela(dados) {
-  const tbody = document.querySelector("#results tbody");
-  tbody.innerHTML = "";
+// Mostra os dados em cards
+function mostrarCards(lista) {
+  const container = document.getElementById("cardsContainer");
+  container.innerHTML = "";
 
-  if (dados.length === 0) {
-    tbody.innerHTML = "<tr><td colspan='4'>Nenhum dado encontrado.</td></tr>";
+  if (lista.length === 0) {
+    container.innerHTML = "<p>Nenhum resultado encontrado.</p>";
+    document.getElementById("contadorResultados").textContent = "";
     return;
   }
 
-  dados.forEach(d => {
-    const tr = document.createElement("tr");
-    tr.innerHTML = `
-      <td>${d.setor || ""}</td>
-      <td>${d.nome || ""}</td>
-      <td>${d.celular || ""}</td>
-      <td>${d.email || ""}</td>
+  lista.forEach(d => {
+    const card = document.createElement("div");
+    card.classList.add("card");
+    card.innerHTML = `
+      <div class="setor">${d.setor || ""}</div>
+      <div class="nome">${d.nome || ""}</div>
+      <div class="contato"><i class="fa-solid fa-phone"></i> ${d.celular || ""}</div>
+      <div class="contato"><i class="fa-solid fa-envelope"></i> ${d.email || ""}</div>
     `;
-    tbody.appendChild(tr);
+    container.appendChild(card);
   });
 
   document.getElementById("contadorResultados").textContent =
-    `${dados.length} registro${dados.length > 1 ? "s" : ""} encontrado${dados.length > 1 ? "s" : ""}`;
+    `${lista.length} contato${lista.length > 1 ? "s" : ""} encontrado${lista.length > 1 ? "s" : ""}`;
 }
+
+// Filtro de busca
+document.getElementById("searchInput").addEventListener("input", e => {
+  const valor = e.target.value.toLowerCase();
+  const filtrados = dados.filter(d =>
+    d.nome.toLowerCase().includes(valor) || d.setor.toLowerCase().includes(valor)
+  );
+  mostrarCards(filtrados);
+});
