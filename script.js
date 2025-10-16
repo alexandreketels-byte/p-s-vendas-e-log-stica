@@ -75,15 +75,7 @@ function mostrarResultados(filtrados) {
       <td>${d.nome || ""}</td>
       <td>${d.celular || ""}</td>
       <td>${d.e-mail || ""}</td>
-      <td>${d.descricao || ""}</td>
-      <td>${d.cod || ""}</td>
-      <td>${d.btus || ""}</td>
-      <td>${d.nf_fabricante || ""}</td>
-      <td>${d.liquidacao || ""}</td>
-      <td>${d.setor || ""}</td>
-      <td>${fotosFormatado}</td>
-      <td>${d.defeito || ""}</td>
-      <td>
+
   ${
     d.alerta
       ? /separar/i.test(d.alerta)
