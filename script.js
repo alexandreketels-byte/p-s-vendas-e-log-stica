@@ -1,7 +1,7 @@
 let dados = [];
 
 // Carrega CSV e exibe data de atualização
-fetch("danificados.csv")
+fetch("equipe.csv")
   .then(response => {
     const dataArquivo = new Date(response.headers.get("Last-Modified"));
     if (!isNaN(dataArquivo)) {
