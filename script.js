@@ -39,6 +39,7 @@ function mostrarCards(lista) {
       <div class="nome">${d.nome || ""}</div>
       <div class="contato"><i class="fa-solid fa-phone"></i> ${d.celular || ""}</div>
       <div class="contato"><i class="fa-solid fa-envelope"></i> ${d.email || ""}</div>
+      <div class="contato"><i class="fa-solid fa-phone"></i> ${d.ramal || ""}</div>
     `;
     container.appendChild(card);
   });
