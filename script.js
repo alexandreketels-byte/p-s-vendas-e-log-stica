@@ -37,7 +37,7 @@ function mostrarCards(lista) {
     card.innerHTML = `
       <div class="setor">${d.setor || ""}</div>
       <div class="nome">${d.nome || ""}</div>
-      <div class="contato"><i class="fa-solid fa-phone"></i> ${d.celular || ""}</div>
+      <div class="contato"><i class="fa-brands fa-whatsapp" style="color: #25D366 ; "></i> ${d.celular || ""}</div>
       <div class="contato"><i class="fa-solid fa-envelope"></i> ${d.email || ""}</div>
       <div class="contato"><i class="fa-solid fa-phone"></i> ${d.ramal || ""}</div>
     `;
