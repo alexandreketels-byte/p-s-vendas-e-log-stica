@@ -14,8 +14,8 @@ fetch("equipe.csv")
   .then(text => {
     const linhas = text.trim().split("\n").slice(1);
     dados = linhas.map(linha => {
-      const [setor, nome, celular, email] = linha.split(",");
-      return { setor, nome, celular, email };
+      const [setor, nome, celular, email, ramal] = linha.split(",");
+      return { setor, nome, celular, email, ramal };
     });
     mostrarCards(dados);
   });
