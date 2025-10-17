@@ -178,9 +178,18 @@ h1 {
   text-shadow: 1px 1px 2px black;
 }
 
-/* ===== RESPONSIVO ===== */
-@media(max-width: 700px){
-  h1 { font-size: 1.6rem; }
-  .menu ul { flex-direction: column; gap: 20px; }
-  .card { width: 90%; }
+/*/* Ajuste para telas pequenas */
+@media (max-width: 480px) {
+  .botoes {
+    flex-wrap: nowrap; /* mantém lado a lado */
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .botoes button {
+    font-size: 14px;
+    padding: 10px 18px;
+  }
 }
+ ===== RESPONSIVO ===== */
+
