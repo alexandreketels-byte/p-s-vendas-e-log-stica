@@ -181,7 +181,7 @@ h1 {
 /*/* Ajuste para telas pequenas */
 @media (max-width: 480px) {
   .botoes {
-    flex-wrap: nowrap; /* mantém lado a lado */
+    flex-wrap: wrap; /* mantém lado a lado */
     flex-direction: row;
     justify-content: center;
   }
