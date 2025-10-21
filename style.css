@@ -182,7 +182,7 @@ h1 {
 @media (max-width: 480px) {
   .botoes {
     flex-wrap: wrap; /* mantém lado a lado */
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
   }
 
