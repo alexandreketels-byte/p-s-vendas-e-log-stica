@@ -184,6 +184,7 @@ h1 {
     flex-wrap: wrap; /* mantém lado a lado */
     flex-direction: column;
     justify-content: center;
+    align-items: center;
   }
 
   .botoes button {
