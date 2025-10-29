@@ -37,7 +37,7 @@ function mostrarCards(lista) {
     card.innerHTML = `
       <div class="setor">${d.setor || ""}</div>
       <div class="nome">${d.nome || ""}</div>
-      <div class="contato"><i class="fa-brands fa-whatsapp" style="color: #25D366 ; "></i> ${d.celular || ""}</div>
+      <div class="contato"><i class="fa-brands fa-whatsapp" style="color: #25D366;"></i> ${d.celular || ""}</div>
       <div class="contato"><i class="fa-solid fa-envelope"></i> ${d.email || ""}</div>
       <div class="contato"><i class="fa-solid fa-phone"></i> ${d.ramal || ""}</div>
     `;
@@ -56,3 +56,20 @@ document.getElementById("searchInput").addEventListener("input", e => {
   );
   mostrarCards(filtrados);
 });
+
+// Abrir PDFs no próprio site (sem nova aba)
+document.querySelectorAll(".dropdown-content a[href$='.pdf']").forEach(link => {
+  link.addEventListener("click", e => {
+    e.preventDefault();
+    const pdfUrl = link.getAttribute("href");
+    abrirPDFnoSite(pdfUrl);
+  });
+});
+
+function abrirPDFnoSite(url) {
+  const container = document.querySelector(".container");
+  container.innerHTML = `
+    <button onclick="location.reload()" style="margin: 20px; padding: 10px 20px; background: gold; border: none; border-radius: 8px; font-weight: bold;">⬅ Voltar</button>
+    <iframe src="${url}" style="width: 95%; height: 90vh; border: none; border-radius: 12px;"></iframe>
+  `;
+}
