@@ -188,24 +188,33 @@ h1 {
 
   .menu ul {
     flex-direction: column;
-    gap: 15px;
+    gap: 20px;
+    padding: 0;
+    margin: 0;
   }
 
   .dropbtn {
     width: 80%;
     text-align: center;
     font-size: 1rem;
-    padding: 10px 20px;
+    padding: 12px 24px;
+  }
+
+  .dropdown {
+    width: 100%;
+    display: flex;
+    justify-content: center;
   }
 
   .dropdown-content {
     position: static;
     transform: none;
     width: 90%;
+    margin-top: 10px; /* 🔹 distância entre o botão e as opções internas */
   }
 
   .dropdown-content a {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
   }
 }
 
