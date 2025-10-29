@@ -180,6 +180,7 @@ h1 {
 
 /*/* Ajuste para telas pequenas */
 /* ===== RESPONSIVIDADE ===== */
+/* ===== AJUSTE RESPONSIVO SEM MUDAR FUNCIONAMENTO ===== */
 @media (max-width: 768px) {
   .menu {
     flex-direction: column;
@@ -188,33 +189,33 @@ h1 {
 
   .menu ul {
     flex-direction: column;
-    gap: 20px;
-    padding: 0;
-    margin: 0;
-  }
-
-  .dropbtn {
-    width: 80%;
-    text-align: center;
-    font-size: 1rem;
-    padding: 12px 24px;
+    align-items: center;
+    gap: 20px; /* 🔹 Espaço entre botões principais */
   }
 
   .dropdown {
+    width: 90%;
+  }
+
+  .dropbtn {
+    display: block;
     width: 100%;
-    display: flex;
-    justify-content: center;
+    text-align: center;
+    font-size: 1rem;
+    padding: 14px 0;
   }
 
   .dropdown-content {
     position: static;
     transform: none;
-    width: 90%;
-    margin-top: 10px; /* 🔹 distância entre o botão e as opções internas */
+    width: 100%;
+    margin-top: 8px;
   }
 
   .dropdown-content a {
     font-size: 0.95rem;
+    width: 100%;
+    box-sizing: border-box;
   }
 }
 
@@ -232,10 +233,3 @@ h1 {
     width: 90%;
   }
 }
-/* Exibir menu quando ativo (em celulares) */
-.dropdown.ativo .dropdown-content {
-  display: flex;
-}
-
-
-
