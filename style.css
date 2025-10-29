@@ -181,25 +181,25 @@ h1 {
 /*/* Ajuste para telas pequenas */
 /* ===== RESPONSIVIDADE ===== */
 /* ===== AJUSTE RESPONSIVO SEM MUDAR FUNCIONAMENTO ===== */
+/* ===== AJUSTE RESPONSIVO (SEM MEXER EM NADA DE FUNCIONALIDADE) ===== */
 @media (max-width: 768px) {
   .menu {
     flex-direction: column;
     align-items: center;
+    gap: 15px;
   }
 
   .menu ul {
     flex-direction: column;
     align-items: center;
-    gap: 20px; /* 🔹 Espaço entre botões principais */
-  }
-
-  .dropdown {
-    width: 90%;
+    gap: 20px;
+    padding: 0;
+    margin: 0;
   }
 
   .dropbtn {
     display: block;
-    width: 100%;
+    width: 90%;
     text-align: center;
     font-size: 1rem;
     padding: 14px 0;
@@ -208,22 +208,19 @@ h1 {
   .dropdown-content {
     position: static;
     transform: none;
-    width: 100%;
-    margin-top: 8px;
+    width: 90%;
+    margin-top: 10px;
   }
 
   .dropdown-content a {
+    display: block;
+    text-align: center;
     font-size: 0.95rem;
     width: 100%;
-    box-sizing: border-box;
   }
 }
 
 @media (max-width: 480px) {
-  h1 {
-    font-size: 1.8rem;
-  }
-
   .search-box input {
     width: 90%;
     font-size: 0.9rem;
@@ -231,5 +228,9 @@ h1 {
 
   .card {
     width: 90%;
+  }
+
+  h1 {
+    font-size: 1.8rem;
   }
 }
