@@ -57,19 +57,38 @@ document.getElementById("searchInput").addEventListener("input", e => {
   mostrarCards(filtrados);
 });
 
-// Abrir PDFs no próprio site (sem nova aba)
+// ===== ABRIR PDFs NO SITE =====
 document.querySelectorAll(".dropdown-content a[href$='.pdf']").forEach(link => {
   link.addEventListener("click", e => {
     e.preventDefault();
     const pdfUrl = link.getAttribute("href");
-    abrirPDFnoSite(pdfUrl);
+    mostrarPDF(pdfUrl);
   });
 });
 
-function abrirPDFnoSite(url) {
-  const container = document.querySelector(".container");
-  container.innerHTML = `
-    <button onclick="location.reload()" style="margin: 20px; padding: 10px 20px; background: gold; border: none; border-radius: 8px; font-weight: bold;">⬅ Voltar</button>
-    <iframe src="${url}" style="width: 95%; height: 90vh; border: none; border-radius: 12px;"></iframe>
+function mostrarPDF(url) {
+  const conteudo = document.querySelector(".container");
+  conteudo.innerHTML = `
+    <button id="voltar" style="
+      background: linear-gradient(90deg, orange, gold);
+      color: black;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 20px;
+      font-weight: bold;
+      box-shadow: 3px 3px 6px rgba(0,0,0,0.6);
+      cursor: pointer;
+      margin-bottom: 15px;
+    ">⬅ Voltar</button>
+
+    <iframe src="${url}" style="
+      width: 95%;
+      height: 90vh;
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.4);
+    "></iframe>
   `;
+
+  document.getElementById("voltar").addEventListener("click", () => location.reload());
 }
