@@ -56,3 +56,18 @@ document.getElementById("searchInput").addEventListener("input", e => {
   );
   mostrarCards(filtrados);
 });
+// ===== ABRIR / FECHAR MENUS NO CELULAR =====
+document.querySelectorAll(".dropbtn").forEach(botao => {
+  botao.addEventListener("click", e => {
+    e.preventDefault(); // impede o clique de recarregar a página
+
+    const dropdown = botao.parentElement;
+    const aberto = dropdown.classList.contains("ativo");
+
+    // fecha todos os outros abertos
+    document.querySelectorAll(".dropdown").forEach(d => d.classList.remove("ativo"));
+
+    // abre apenas o clicado
+    if (!aberto) dropdown.classList.add("ativo");
+  });
+});
