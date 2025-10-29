@@ -232,5 +232,10 @@ h1 {
     width: 90%;
   }
 }
+/* Exibir menu quando ativo (em celulares) */
+.dropdown.ativo .dropdown-content {
+  display: flex;
+}
+
 
 
