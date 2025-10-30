@@ -92,3 +92,27 @@ function mostrarPDF(url) {
 
   document.getElementById("voltar").addEventListener("click", () => location.reload());
 }
+// ===== FILTRO DE PESQUISA NO MENU =====
+const searchMenuInput = document.getElementById("menuSearchInput");
+
+if (searchMenuInput) {
+  searchMenuInput.addEventListener("input", e => {
+    const termo = e.target.value.toLowerCase();
+
+    document.querySelectorAll(".dropdown-content a").forEach(link => {
+      const texto = link.textContent.toLowerCase();
+      link.style.display = texto.includes(termo) ? "block" : "none";
+    });
+
+    // Se o campo estiver vazio, fecha todos os dropdowns
+    if (termo === "") {
+      document.querySelectorAll(".dropdown-content").forEach(menu => {
+        menu.style.display = "none";
+      });
+    } else {
+      document.querySelectorAll(".dropdown-content").forEach(menu => {
+        menu.style.display = "flex";
+      });
+    }
+  });
+}
