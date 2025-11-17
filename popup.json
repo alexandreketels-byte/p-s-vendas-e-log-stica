@@ -1,5 +1,5 @@
-// ===== POP UP DE NOVO PROCEDIMENTO quando quiser desativar, colocar como false no lugar do ativo =====
 {
   "ativo": true,
   "mensagem": "Novo procedimento disponível. Confira no menu do Pós Vendas."
 }
+// APENAS COMO MSG .. SE QUISER DESATIVAR O POP UP, APENAS NO LUGAR DO ATIVO, COLOCAR FALSE.
