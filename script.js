@@ -119,4 +119,3 @@ fetch("popup.json")
     }
   })
   .catch(() => console.log("Popup desativado ou arquivo não encontrado"));
-
