@@ -34,7 +34,6 @@ h1 {
   margin: 0;
 }
 
-/* ===== BOTÕES PRINCIPAIS ===== */
 .dropbtn {
   background: linear-gradient(90deg, orange, gold);
   color: black;
@@ -43,21 +42,14 @@ h1 {
   padding: 12px 24px;
   border-radius: 8px;
   box-shadow: 5px 5px 8px rgba(0,0,0,0.8);
-  transition: all 0.3s ease;
-  cursor: pointer;
+  transition: all 0.8s ease;
 }
 
 .dropbtn:hover {
-  background: linear-gradient(90deg, #ffe066, gold); /* dourado mais claro */
+  background: #1abc9c;
   transform: scale(1.05);
 }
 
-.dropbtn:active {
-  background: linear-gradient(90deg, gold, #ffcc33);
-  transform: scale(0.98);
-}
-
-/* ===== SUBMENU ===== */
 .dropdown {
   position: relative;
   display: inline-block;
@@ -95,13 +87,20 @@ h1 {
 }
 
 .dropdown-content a:hover {
-  background: linear-gradient(90deg, #ffe066, gold);
   transform: scale(1.05);
 }
 
 /* ===== PESQUISA ===== */
 .search-box {
   margin: 20px auto;
+}
+
+.titulo-contatos {
+  margin-top: 10px;
+  font-size: 1.8rem;
+  letter-spacing: 2px;
+  color: gold;
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.8);
 }
 
 .search-box input {
@@ -113,14 +112,6 @@ h1 {
   outline: none;
   font-size: 1rem;
   box-shadow: 0 0 8px rgba(0,0,0,0.5);
-}
-
-.titulo-contatos {
-  margin-top: 10px;
-  font-size: 1.8rem;
-  letter-spacing: 2px;
-  color: gold;
-  text-shadow: 2px 2px 5px rgba(0,0,0,0.8);
 }
 
 /* ===== CARDS ===== */
@@ -144,7 +135,6 @@ h1 {
   transition: transform 0.3s ease;
   backdrop-filter: blur(6px);
 }
-
 .card:hover {
   transform: translateY(-5px);
 }
@@ -175,36 +165,57 @@ h1 {
   width: 25px;
 }
 
-/* ===== RESPONSIVO ===== */
+/* ===== RODAPÉ ===== */
+#contadorResultados {
+  margin-top: 25px;
+  font-weight: bold;
+}
+
+#ultimaAtualizacao {
+  margin-top: 5px;
+  font-size: 14px;
+  color: #ffeb3b;
+  text-shadow: 1px 1px 2px black;
+}
+
+/*/* Ajuste para telas pequenas */
+/* ===== RESPONSIVIDADE ===== */
+/* ===== AJUSTE RESPONSIVO SEM MUDAR FUNCIONAMENTO ===== */
 @media (max-width: 768px) {
+  .menu {
+    flex-direction: column;
+    align-items: center;
+  }
+
   .menu ul {
     flex-direction: column;
     align-items: center;
-    gap: 20px; /* espaçamento entre os botões */
+    gap: 30px;
   }
 
-  .menu {
-    flex-direction: column;
+  .dropdown {
+    width: auto; /* deixa o botão acompanhar o texto */
   }
 
   .dropbtn {
-    width: 80%;
+    display: inline-block;
+    width: auto; /* remove largura fixa */
+    padding: 14px 36px; /* dá mais espaço interno */
     text-align: center;
+    font-size: 1rem;
+    white-space: nowrap; /* impede quebra de linha */
   }
-}
-/* ===== PESQUISA NO MENU ===== */
-.search-menu {
-  text-align: center;
-  margin-bottom: 25px;
-}
 
-.search-menu input {
-  width: 80%;
-  max-width: 400px;
-  padding: 10px 15px;
-  border-radius: 8px;
-  border: none;
-  outline: none;
-  font-size: 1rem;
-  box-shadow: 0 0 8px rgba(0,0,0,0.5);
+  .dropdown-content {
+    position: static;
+    transform: none;
+    width: 100%;
+    margin-top: 8px;
+  }
+
+  .dropdown-content a {
+    font-size: 0.95rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
 }
