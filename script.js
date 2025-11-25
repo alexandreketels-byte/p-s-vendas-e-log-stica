@@ -110,29 +110,30 @@ function mostrarPopup(mensagem) {
   });
 }
 
-/* 🌟🌟 ADICIONAR AQUI — FUNÇÃO NOVA 🌟🌟 */
-function mostrarListaNotificacoes(texto) {
-  const popup = document.createElement("div");
-  popup.id = "popupAviso";
-  popup.innerHTML = `
-    <div class="popup-conteudo" style="max-width: 380px;">
-      <h3>Notificações</h3>
-      <div style="text-align: left; max-height: 300px; overflow-y: auto;">
-        ${texto}
-      </div>
-      <button id="fecharLista">Fechar</button>
-    </div>
-  `;
-  document.body.appendChild(popup);
-
-  document.getElementById("fecharLista").addEventListener("click", () => {
-    popup.remove();
-  });
-}
-/* 🌟🌟 FIM DA FUNÇÃO NOVA 🌟🌟 */
-
 // Buscar status no popup.json
 fetch("popup.json?V=1")
   .then(r => r.json())
   .then(cfg => {
-    ...
+    if (cfg.ativo) {
+
+      const agora = Date.now(); 
+      const ultimaVez = localStorage.getItem("popup_mostrado_v1_tempo");
+
+      // 10 minutos em milissegundos
+      const dezMin = 10 * 60 * 1000;
+
+      // Verifica:
+      // 1. Se nunca mostrou, OU
+      // 2. Se já passou 10 minutos
+      const podeMostrar =
+        !ultimaVez || (agora - parseInt(ultimaVez)) > dezMin;
+
+      if (podeMostrar) {
+        mostrarPopup(cfg.mensagem);
+
+        // Marca que mostrou (versão + tempo)
+        localStorage.setItem("popup_mostrado_v1_tempo", agora);
+      }
+    }
+  })
+  .catch(() => console.log("Popup desativado ou arquivo não encontrado"));
