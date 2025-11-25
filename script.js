@@ -149,7 +149,7 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 
   btn.addEventListener("click", () => {
-    fetch("popup.json?V=1")
+    fetch("popup.json")
       .then(r => r.json())
       .then(cfg => {
         mostrarListaNotificacoes(cfg.mensagem);
