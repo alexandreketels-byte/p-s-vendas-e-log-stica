@@ -139,10 +139,12 @@ fetch("popup.json?V=1")
   .catch(() => console.log("Popup desativado ou arquivo não encontrado"));
 
 // Botão de notificações
-window.onload = () => {
+// Botão de notificações (corrigido)
+window.addEventListener("DOMContentLoaded", () => {
   const btn = document.getElementById("botaoNotificacoes");
+
   if (!btn) {
-    console.log("Botão Notificações não encontrado na página!");
+    console.log("Botão Notificações não encontrado!");
     return;
   }
 
@@ -154,4 +156,4 @@ window.onload = () => {
       })
       .catch(() => alert("Não foi possível carregar notificações."));
   });
-};
+});
