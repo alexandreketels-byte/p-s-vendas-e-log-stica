@@ -1,16 +1,46 @@
 SETOR,NOME,CELULAR,E-MAIL,RAMAL
-SAC,KARINA,11 91370-0993,sac@discomercio.com.br,Ramal 307
-GARANTIA,AMANDA,11 91370-0925,posvendas2@discomercio.com.br,Ramal 310
-DEVOLUÇÃO,CLARA,11 94078-6813,devolucao@discomercio.com.br,Ramal 308
-OCORRÊNCIAS,CAMILA,11 99357-0720,ocorrencias@discomercio.com.br,Ramal 412
-OCORRÊNCIAS,VICTORIA,16 99645-9973,ocorrencias2@discomercio.com.br,Ramal 303
-FRETE,LUIZ,11 97653-2897,logistica5@discomercio.com.br,Ramal 255
+SAC - PÓS VENDAS,KARINA,11 91370-0993,sac@discomercio.com.br,Ramal 307
+GARANTIA - PÓS VENDAS,AMANDA,11 91370-0925,posvendas2@discomercio.com.br,Ramal 310
+DEVOLUÇÃO - PÓS VENDAS,CLARA,11 94078-6813,devolucao@discomercio.com.br,Ramal 308
+OCORRÊNCIAS - LOGÍSTICA,CAMILA,11 99357-0720,ocorrencias@discomercio.com.br,Ramal 412
+OCORRÊNCIAS - LOGÍSTICA,VICTORIA,16 99645-9973,ocorrencias2@discomercio.com.br,Ramal 303
+FRETE - LOGÍSTICA,LUIZ,11 97653-2897,logistica5@discomercio.com.br,Ramal 255
 CORDENADORA - LOGÍSTICA / PÓS VENDAS,PALOMA,11 94153-1743,posvendas1@discomercio.com.br,Ramal 305
 GERENTE - LOGÍSTICA / PÓS VENDAS,ALEXANDRE KETELS,11 99479-5844,admlogistica@discomercio.com.br,Ramal 265
-FATURAMENTO,RICARDO PREGO,11 97884-1296,faturamento@discomercio.com.br,Ramal 253
+FATURAMENTO - FISCAL,RICARDO PREGO,11 97884-1296,faturamento@discomercio.com.br,Ramal 253
 COMPRAS,GABRIELA HERNANDES,11 93445-0996,compras@discomercio.com.br,Ramal 254
 COMPRAS,ADAILTON SILVA,11 94111-9760,compras1@discomercio.com.br ,Ramal 605
-
-
-
-
+GERENTE - LOGÍSTICA - CD,EDILSON,27 99286-6317,cdserra@discomercio.com.br ,Ramal 261
+CORDENADOR - LOGÍSTICA - CD,JEFFERSON,11 91306-8457,vitoria2@discomercio.com.br ,Ramal 701
+EXPEDIÇÃO - LOGÍSTICA - CD,ICARO,11 93286-6748,vitoria3@discomercio.com.br ,Ramal 266
+EXPEDIÇÃO - LOGÍSTICA - CD,LUAN,11 99189-4347,vitoria1@discomercio.com.br ,Ramal 266
+RECEBIMENTO / DEVOLUÇÃO - CD,MARLLON,11 99366-1143,garantia3@discomercio.com.br ,Ramal 302
+RECEBIMENTO / DEVOLUÇÃO - CD,FÁBIO,27 99286-7424,garantia4@discomercio.com.br,Ramal 301
+GERENTE - CRÉDITO,LILIAN,,lilian@discomercio.com.br,Ramal 206
+ANÁLISE DE BOLETOS - CRÉDITO,MARCELA,,analise1@discomercio.com.br,Ramal 204
+ANÁLISE ANTIFRAUDE DE CARTÃO - CRÉDITO,DÉBORA,,antifraude@discomercio.com.br,Ramal 205
+ANÁLISE ANTIFRAUDE DE CARTÃO - CRÉDITO,KATIA,,antifraude@discomercio.com.br,Ramal 213
+COBRANÇA - CRÉDITO,MARIA APARECIDA,,cobranca@discomercio.com.br,Ramal 209
+COBRANÇA - CRÉDITO,ALEXSANDRA,,cobranca2@discomercio.com.br,Ramal 
+GERENTE - FINANCEIRO,EMILY,,emily@discomercio.com.br,Ramal 211
+CONTAS A PAGAR - FINANCEIRO,AMANDA BRITO,,contasapagar@discomercio.com.br ,Ramal 214
+COMPROVANTES - FINANCEIRO,EDUARDA,,comprovantes@discomercio.com.br ,Ramal 203
+ASSISTENTE- FINANCEIRO,FERNANDA,,admfinanceiro@discomercio.com.br ,Ramal 207
+DEPARTAMENTO PESSOAL - RH,MARCOS LIMA,11 99295-0071,dp@discomercio.com.br ,Ramal 
+ADMINISTRAÇÃO - FACILITIES,RAPHAEL GASQUES,11 97653-3398,adm@discomercio.com.br ,Ramal 
+TI,CHARLES,11 99977-9761,disti@discomercio.com.br ,Ramal  263
+COMPRAS,GUSTAVO SOUZA ,11 99209-8726,gustavo.souza@discomercio.com.br ,Ramal 
+GERENTE - COMPRAS,JAIME PASCKOCIMAS,11 94907-1776,jaime@discomercio.com.br ,Ramal
+CORDENADOR - CONTROLADORIA ,WALKER RODRIGUES,11 96616-5271,controle1@discomercio.com.br ,Ramal 252
+DIRETOR - CONTROLADORIA,CARLOS PRADO,11 98925-7625,carlos@discomercio.com.br,Ramal
+GERENTE - MARKETING,FELIPE MORENO,11 97070-8374,felipe@discomercio,com.br,Ramal 409
+MARKETING,KESLEY ARAUJO,,kesley@discomercio.com.br,Ramal 609
+COMERCIAL - OPERAÇÕES,LUIS GIANOTTO,11 98763-9580,luis@discomercio.com.br ,Ramal
+RELACIONAMENTO,JULIA,13 99136-0567, relacionamento1@discomercio.com.br,Ramal
+RELACIONAMENTO,ANDREA,11 97848-1219,relacionamento2@discomercio.com.br,Ramal
+MARKETING,GUSTAVO SIMÕES,11 98892-8118,adm.marketing@discomercio.com.br,Ramal
+GERENTE - COMERCIAL LOJA 206,YAN SARAIVA,11 94518-3892,yan@unisarcondicionado.com.br,Ramal 520
+COMERCIAL - LOJA 206,RENATO NOBREGA,11 99414-7122,engenharia1@unisarcondicionado.com.b,Ramal 523
+COMERCIAL - LOJA 206,PEDRO CHAGAS,11 91326-3184,sac@unisarcondicionado.com.br,Ramal 565
+COMERCIAL - LOJA 206,WANESSA ROSA,11 91323-9922,engenharia3@unisarcondicionado.com.br,Ramal 
+COMERCIAL - LOJA 206,FRANS LEON,11 91325-5136,engenharia2@unisarcondicionado.com.br,Ramal 

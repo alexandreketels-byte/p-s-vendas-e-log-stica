@@ -93,7 +93,7 @@ function mostrarPDF(url) {
   document.getElementById("voltar").addEventListener("click", () => location.reload());
 }
 
-// ===== POP UP DE NOVO PROCEDIMENTO =====
+// ===== POP UP DE NOVO PROCEDIMENTO no arquivo json quando quiser colocar um pop up é so deixar como ativo e se não quiser é só deixar como false =====
 function mostrarPopup(mensagem) {
   const popup = document.createElement("div");
   popup.id = "popupAviso";
@@ -111,11 +111,29 @@ function mostrarPopup(mensagem) {
 }
 
 // Buscar status no popup.json
-fetch("popup.json")
+fetch("popup.json?V=1")
   .then(r => r.json())
   .then(cfg => {
     if (cfg.ativo) {
-      mostrarPopup(cfg.mensagem);
+
+      const agora = Date.now(); 
+      const ultimaVez = localStorage.getItem("popup_mostrado_v1_tempo");
+
+      // 10 minutos em milissegundos
+      const dezMin = 10 * 60 * 1000;
+
+      // Verifica:
+      // 1. Se nunca mostrou, OU
+      // 2. Se já passou 10 minutos
+      const podeMostrar =
+        !ultimaVez || (agora - parseInt(ultimaVez)) > dezMin;
+
+      if (podeMostrar) {
+        mostrarPopup(cfg.mensagem);
+
+        // Marca que mostrou (versão + tempo)
+        localStorage.setItem("popup_mostrado_v1_tempo", agora);
+      }
     }
   })
   .catch(() => console.log("Popup desativado ou arquivo não encontrado"));
