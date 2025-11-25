@@ -137,3 +137,13 @@ fetch("popup.json?V=1")
     }
   })
   .catch(() => console.log("Popup desativado ou arquivo não encontrado"));
+
+// ===== BOTÃO DE NOTIFICAÇÕES =====
+document.getElementById("botaoNotificacoes").addEventListener("click", () => {
+  fetch("popup.json?btn=1")
+    .then(r => r.json())
+    .then(cfg => {
+      mostrarPopup(cfg.mensagem); // usa a mesma função existente
+    })
+    .catch(() => alert("Erro ao carregar notificações!"));
+});
