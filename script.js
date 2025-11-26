@@ -129,6 +129,17 @@ fetch("popup.json?V=1")
         !ultimaVez || (agora - parseInt(ultimaVez)) > dezMin;
 
       if (podeMostrar) {
+        // Mensagem original
+let msg = cfg.mensagem;
+
+// Regex para capturar data no início (ex: 25/11/2025)
+let regexData = /^(\d{1,2}\/\d{1,2}\/\d{2,4})/;
+
+// Verifica e aplica destaque
+let msgFormatada = msg.replace(regexData, `<span style="color: red; font-weight: bold; font-size: 20px;">$1</span>`);
+
+// Exibe no popup
+document.getElementById("popup-msg").innerHTML = msgFormatada;
         mostrarPopup(cfg.mensagem);
 
         // Marca que mostrou (versão + tempo)
