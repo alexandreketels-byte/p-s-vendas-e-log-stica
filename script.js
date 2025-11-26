@@ -116,7 +116,7 @@ fetch("popup.json?V=1")
   .then(cfg => {
     if (cfg.ativo) {
 
-      const agora = Date.now(); 
+      const agora = Date.now();
       const ultimaVez = localStorage.getItem("popup_mostrado_v1_tempo");
 
       // 10 minutos em milissegundos
@@ -129,18 +129,17 @@ fetch("popup.json?V=1")
         !ultimaVez || (agora - parseInt(ultimaVez)) > dezMin;
 
       if (podeMostrar) {
-        // Mensagem original
-let msg = cfg.mensagem;
 
-// Regex para capturar data no início (ex: 25/11/2025)
-let regexData = /^(\d{1,2}\/\d{1,2}\/\d{2,4})/;
+        // 🔥 DESTACAR A DATA NO INÍCIO DA MENSAGEM
+        let msg = cfg.mensagem;
+        let regexData = /^(\d{1,2}\/\d{1,2}\/\d{2,4})/;
+        let msgFormatada = msg.replace(
+          regexData,
+          `<span style="color: red; font-weight: bold; font-size: 20px;">$1</span>`
+        );
 
-// Verifica e aplica destaque
-let msgFormatada = msg.replace(regexData, `<span style="color: red; font-weight: bold; font-size: 20px;">$1</span>`);
-
-// Exibe no popup
-document.getElementById("popup-msg").innerHTML = msgFormatada;
-        mostrarPopup(cfg.mensagem);
+        // Mostrar popup com data destacada
+        mostrarPopup(msgFormatada);
 
         // Marca que mostrou (versão + tempo)
         localStorage.setItem("popup_mostrado_v1_tempo", agora);
@@ -149,12 +148,22 @@ document.getElementById("popup-msg").innerHTML = msgFormatada;
   })
   .catch(() => console.log("Popup desativado ou arquivo não encontrado"));
 
+
 // ===== BOTÃO DE NOTIFICAÇÕES =====
 document.getElementById("botaoNotificacoes").addEventListener("click", () => {
   fetch("popup.json?btn=1")
     .then(r => r.json())
     .then(cfg => {
-      mostrarPopup(cfg.mensagem); // usa a mesma função existente
+
+      // 🔥 DESTACAR A DATA TAMBÉM AO ABRIR PELO BOTÃO
+      let msg = cfg.mensagem;
+      let regexData = /^(\d{1,2}\/\d{1,2}\/\d{2,4})/;
+      let msgFormatada = msg.replace(
+        regexData,
+        `<span style="color: red; font-weight: bold; font-size: 20px;">$1</span>`
+      );
+
+      mostrarPopup(msgFormatada);
     })
     .catch(() => alert("Erro ao carregar notificações!"));
 });
