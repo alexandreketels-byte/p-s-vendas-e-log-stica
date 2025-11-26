@@ -272,3 +272,10 @@ h1 {
 #botaoNotificacoes:hover {
   transform: scale(1.05);
 }
+
+.linha-popup {
+  border: none;
+  border-top: 2px solid gold;
+  margin: 12px 0;
+  width: 100%;
+}
