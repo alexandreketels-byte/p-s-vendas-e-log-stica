@@ -111,37 +111,37 @@ function mostrarPopup(mensagem) {
 }
 
 // Buscar status no popup.json
-fetch("popup.json?V=1")
+    fetch("popup.json?V=1")
   .then(r => r.json())
   .then(cfg => {
     if (cfg.ativo) {
 
       const agora = Date.now();
       const ultimaVez = localStorage.getItem("popup_mostrado_v1_tempo");
-
-      // 10 minutos em milissegundos
       const dezMin = 10 * 60 * 1000;
 
-      // Verifica:
-      // 1. Se nunca mostrou, OU
-      // 2. Se já passou 10 minutos
       const podeMostrar =
         !ultimaVez || (agora - parseInt(ultimaVez)) > dezMin;
 
       if (podeMostrar) {
 
-        // 🔥 DESTACAR A DATA NO INÍCIO DA MENSAGEM
+        // 🔥 DESTACAR TODAS AS DATAS NO INÍCIO DE CADA BLOCO
         let msg = cfg.mensagem;
-        let regexData = /^(\d{1,2}\/\d{1,2}\/\d{2,4})/;
+
+        // Pega datas no início OU após <br><br>
+        let regexDatas = /(?:^|<br><br>)(\d{1,2}\/\d{1,2}\/\d{2,4})/g;
+
         let msgFormatada = msg.replace(
-          regexData,
-          `<span style="color: red; font-weight: bold; font-size: 20px;">$1</span>`
+          regexDatas,
+          (match, data) =>
+            match.replace(
+              data,
+              `<span style="color: red; font-weight: bold; font-size: 20px;">${data}</span>`
+            )
         );
 
-        // Mostrar popup com data destacada
         mostrarPopup(msgFormatada);
 
-        // Marca que mostrou (versão + tempo)
         localStorage.setItem("popup_mostrado_v1_tempo", agora);
       }
     }
@@ -155,12 +155,17 @@ document.getElementById("botaoNotificacoes").addEventListener("click", () => {
     .then(r => r.json())
     .then(cfg => {
 
-      // 🔥 DESTACAR A DATA TAMBÉM AO ABRIR PELO BOTÃO
+      // 🔥 DESTACAR TODAS AS DATAS AO CLICAR NO BOTÃO TAMBÉM
       let msg = cfg.mensagem;
-      let regexData = /^(\d{1,2}\/\d{1,2}\/\d{2,4})/;
+      let regexDatas = /(?:^|<br><br>)(\d{1,2}\/\d{1,2}\/\d{2,4})/g;
+
       let msgFormatada = msg.replace(
-        regexData,
-        `<span style="color: red; font-weight: bold; font-size: 20px;">$1</span>`
+        regexDatas,
+        (match, data) =>
+          match.replace(
+            data,
+            `<span style="color: red; font-weight: bold; font-size: 20px;">${data}</span>`
+          )
       );
 
       mostrarPopup(msgFormatada);
