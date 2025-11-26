@@ -99,7 +99,7 @@ function mostrarPopup(mensagem) {
   popup.id = "popupAviso";
   popup.innerHTML = `
     <div class="popup-conteudo">
-      <p>${mensagem}</p>
+      <p>${mensagem.replace(/<br><br>/g, "<hr class='linha-popup'>")}</p>
       <button id="fecharPopup">Ok</button>
     </div>
   `;
